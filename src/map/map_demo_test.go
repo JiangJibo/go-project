@@ -1,6 +1,8 @@
 package _map
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestMapMaking(t *testing.T) {
 	m := map[string]int{"one": 1, "two": 2}

@@ -14,6 +14,8 @@ type MyData struct {
 	aSlice  []byte
 }
 
+//内存对齐是一种牺牲空间节约时间的做法，但是我们一定要注意不要浪费空间，
+//聚合类型定义的时候一定要将占用内从空间小的类型放在前面。
 func TestReflect(t *testing.T) {
 	typ := reflect.TypeOf(MyData{})
 	fmt.Printf("Struct is %d bytes long \n", typ.Size())
@@ -36,4 +38,9 @@ func TestReflect(t *testing.T) {
 
 	dataSlice := *(*reflect.SliceHeader)(unsafe.Pointer(&data.aSlice))
 	fmt.Printf("Slice data is %#v\n", (*[3]byte)(unsafe.Pointer(dataSlice.Data)))
+
+	var a int = 1
+	fmt.Println(&a)
+	b := 2
+	fmt.Print(&b)
 }
