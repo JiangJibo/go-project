@@ -8,7 +8,7 @@ import (
 
 // 接口方法签名
 type Programmer interface {
-	WriteHelloWrold() string
+	WriteHelloWorld() string
 }
 
 // 不需要显式的实现接口
@@ -22,25 +22,25 @@ func writeHelloWorld(s string) string {
 
 // WriteHelloWrold() string 方法签名和 Programmer 一致
 // (g *GoProgrammer) 绑定到哪个struct，结构体
-func (g *GoProgrammer) WriteHelloWrold() string {
+func (g *GoProgrammer) WriteHelloWorld() string {
 	return fmt.Sprint("Hello World")
 }
 
 func print(p GoProgrammer) string {
-	p.WriteHelloWrold()
+	p.WriteHelloWorld()
 	return "ssss"
 }
 
 func TestInterface(t *testing.T) {
 	g := GoProgrammer{}
-	t.Log(g.WriteHelloWrold())
+	t.Log(g.WriteHelloWorld())
 
 	// 定义接口变量
 	var prog Programmer = &GoProgrammer{}
-	prog.WriteHelloWrold()
+	prog.WriteHelloWorld()
 
 	p := &GoProgrammer{}
-	p.WriteHelloWrold()
+	p.WriteHelloWorld()
 
 }
 
