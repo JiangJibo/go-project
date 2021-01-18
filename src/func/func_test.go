@@ -12,7 +12,9 @@ func returnMultiValues() (int, int) {
 }
 
 // 包装函数, 类似装饰者模式
-func timeSpent(inner func(op int) int) func(op int) int {
+type IntConv func(op int) int
+
+func timeSpent(inner IntConv) IntConv {
 	return func(n int) int {
 		start := time.Now()
 		ret := inner(n)
@@ -30,7 +32,7 @@ func TestFt(t *testing.T) {
 	var a, _ = returnMultiValues()
 	t.Log(a)
 	timeSpentFunc := timeSpent(slowFunc)
-	x := timeSpentFunc(1)
+	x := timeSpentFunc(a)
 	t.Log(x)
 }
 
