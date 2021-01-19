@@ -18,7 +18,7 @@ func (p *Pet) SpeakTo(host string) {
 }
 
 type Dog struct {
-	Pet // 匿名嵌套对象，获得了Pet的方法,类似继承; 但不支持方法重载，也就是Dog不能重载Pet方法
+	Pet // 匿名嵌套对象，获得了Pet的方法,类似继承; 但不支持方法重写，也就是Dog不能重写Pet方法
 }
 
 func (d *Dog) Speak() {
@@ -28,4 +28,20 @@ func (d *Dog) Speak() {
 func TestDog(t *testing.T) {
 	dog := new(Dog)
 	dog.SpeakTo("duck")
+}
+
+// 接口方法签名
+type WriteProgrammer interface {
+	WriteHelloWorld() string
+	//ReadHelloWorld() string  提倡小接口，否则一个struct需要实现所有接口，会很麻烦
+}
+
+type ReadProgrammer interface {
+	ReadHelloWorld() string
+}
+
+// 小接口组合成大接口
+type Programmer interface {
+	WriteProgrammer
+	ReadProgrammer
 }
