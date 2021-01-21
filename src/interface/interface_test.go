@@ -26,6 +26,9 @@ type Programmer interface {
 type GoProgrammer struct {
 }
 
+type JavaProgrammer struct {
+}
+
 // 没有绑定的函数, GoProgrammer 不能调用
 func writeHelloWorld(s string) string {
 	return "x"
@@ -37,6 +40,15 @@ func (g *GoProgrammer) WriteHelloWorld() string {
 	return fmt.Sprint("Hello World")
 }
 
+func (g *JavaProgrammer) WriteHelloWorld() string {
+	return fmt.Sprint("Hello World")
+}
+
+// 接口参数, 传入的一定是接口的实现的指针
+func writeFirstProgram(p Programmer) {
+	fmt.Printf("%T, %v\n", p, p.WriteHelloWorld())
+}
+
 func print(p GoProgrammer) string {
 	p.WriteHelloWorld()
 	return "ssss"
@@ -44,6 +56,7 @@ func print(p GoProgrammer) string {
 
 func TestInterface(t *testing.T) {
 	g := GoProgrammer{}
+	writeFirstProgram(&g)
 	t.Log(g.WriteHelloWorld())
 
 	// 定义接口变量
