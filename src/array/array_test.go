@@ -2,8 +2,17 @@ package array
 
 import (
 	"fmt"
+	"package"
 	"testing"
 )
+
+func init() {
+	fmt.Println("array_test init11111")
+}
+
+func init() {
+	fmt.Println("array_test init22222")
+}
 
 func TestArraySliceGrowing(t *testing.T) {
 	x := [3]int{1, 2, 3}
@@ -39,4 +48,9 @@ func TestCompareSlice(t *testing.T) {
 	if a == b {
 
 	}
+}
+
+func TestPackages(t *testing.T) {
+	t.Log(_package.GetFibonacci(10))
+	t.Log(_package.Square(3))
 }
