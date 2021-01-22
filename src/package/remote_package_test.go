@@ -1,7 +1,7 @@
 package _package
 
 import "testing"
-import cm "github.com/easierway/concurrent_map"
+import cm "github.com/easierway/concurrent_map" // go get -u "github......"
 
 func TestConcurrentMap(t *testing.T) {
 	m := cm.CreateConcurrentMap(99)
