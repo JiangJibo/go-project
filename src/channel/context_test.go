@@ -35,3 +35,24 @@ func TestCancelWithContext(t *testing.T) {
 	cancel()
 	time.Sleep(time.Millisecond * 100)
 }
+
+func TestName(t *testing.T) {
+	var a int = 1
+	var b *int = &a
+	var c **int = &b
+	var x int = *b
+	fmt.Println("a = ", a)
+	fmt.Println("&a = ", &a)
+	fmt.Println("*&a = ", *&a)
+	fmt.Println("b = ", b)
+	fmt.Println("&b = ", &b)
+	fmt.Println("*&b = ", *&b)
+	fmt.Println("*b = ", *b)
+	fmt.Println("c = ", c)
+	fmt.Println("*c = ", *c)
+	fmt.Println("&c = ", &c)
+	fmt.Println("*&c = ", *&c)
+	fmt.Println("**c = ", **c)
+	fmt.Println("***&*&*&*&c = ", ***&*&*&*&*&c)
+	fmt.Println("x = ", x)
+}

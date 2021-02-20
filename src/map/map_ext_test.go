@@ -31,6 +31,7 @@ func TestMapForSet(t *testing.T) {
 	} else {
 		t.Logf("1 not exists")
 	}
+	for k, v := range mset {
+		t.Log(k, v)
+	}
 }
-
-
